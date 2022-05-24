@@ -1,7 +1,15 @@
-import { greet } from "./utils/greet";
+import { useState } from "react";
+import Login from "./components/login";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  const [id, setId] = useState<string>("");
+
+  return (
+    <>
+      {id}
+      <Login onIdSubmit={setId} />
+    </>
+  );
 }
 
 export default App;
