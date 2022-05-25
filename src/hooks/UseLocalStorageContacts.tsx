@@ -3,19 +3,23 @@ import React, { useState, useEffect } from "react";
 const PREFIX = "whatsapp-clone-"; //to group all data stored in this app
 
 export interface UseLocalStorageReturn {
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  value: Contact[];
+  setValue: React.Dispatch<React.SetStateAction<Contact[]>>;
+}
+interface Contact {
+  id: string;
+  name: string;
 }
 
 //set states and save to local storage
-export default function UseLocalStorage(
+export default function UseLocalStorageContacts(
   key: string,
-  initialValue: string
+  initialValue: Contact[]
 ): UseLocalStorageReturn {
   const prefixedKey = PREFIX + key;
   const [value, setValue]: [
-    string,
-    React.Dispatch<React.SetStateAction<string>>
+    Contact[],
+    React.Dispatch<React.SetStateAction<Contact[]>>
   ] = useState(() => {
     const jsonValue = localStorage.getItem(prefixedKey);
     if (jsonValue !== null) {
