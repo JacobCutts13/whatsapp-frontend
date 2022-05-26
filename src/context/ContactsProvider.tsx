@@ -1,22 +1,14 @@
 import { createContext, useContext } from "react";
 import UseLocalStorageContacts from "../hooks/UseLocalStorageContacts";
+import { Contacts, ContactsContextValue } from "../interfaces"
 
 interface Props {
   children: JSX.Element;
 }
 
-interface Contacts {
-  id: string;
-  name: string;
-}
-export interface ContextValue {
-  contacts: Contacts[];
-  createContact: (id: string, name: string) => void;
-}
+const ContactsContext = createContext<ContactsContextValue | null>(null);
 
-const ContactsContext = createContext<ContextValue | null>(null);
-
-export function useContacts(): ContextValue | null {
+export function useContacts(): ContactsContextValue | null {
   return useContext(ContactsContext);
 }
 
@@ -30,7 +22,7 @@ export function ContactProvider(props: Props): JSX.Element {
   const createContact = (id: string, name: string) => {
     setContacts((prevContacts) => [...prevContacts, { id, name }]);
   };
-  const contextValue: ContextValue = { contacts, createContact };
+  const contextValue: ContactsContextValue = { contacts, createContact };
 
   return (
     <ContactsContext.Provider value={contextValue}>
