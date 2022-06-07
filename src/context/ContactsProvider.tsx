@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import UseLocalStorageContacts from "../hooks/UseLocalStorageContacts";
-import { Contacts, ContactsContextValue } from "../interfaces"
+import { Contacts, ContactsContextValue } from "../interfaces";
 
 interface Props {
   children: JSX.Element;

@@ -10,7 +10,7 @@ function App(): JSX.Element {
 
   const DashboardWrapped = (
     <ContactProvider>
-      <ConversationProvider>
+      <ConversationProvider id={id}>
         <Dashboard id={id} />
       </ConversationProvider>
     </ContactProvider>

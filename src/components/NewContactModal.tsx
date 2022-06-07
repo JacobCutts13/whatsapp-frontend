@@ -17,7 +17,7 @@ export default function NewContactModal(props: Props): JSX.Element {
       createContact(idRef.current.value, nameRef.current.value);
       props.closeModal();
     } else {
-      window.alert("Fill in both fields")
+      window.alert("Fill in both fields");
     }
   };
 
